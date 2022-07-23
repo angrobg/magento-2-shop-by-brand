@@ -1,27 +1,27 @@
-Brand,Brand
-"Add New Brand","Add New Brand"
-"Save Brand","Save Brand"
-Delete,Delete
+Brand,Марка
+"Add New Brand","Нова марка"
+"Save Brand","Зпази"
+Delete,Изтриване
 "Close Window","Close Window"
 "Save and Continue Edit","Save and Continue Edit"
 "Save and Close","Save and Close"
-"Brand Information","Brand Information"
-Title,Title
+"Brand Information","Информация за марката"
+Title,Заглавие
 "URL key","URL key"
 "Brand Logo","Brand Logo"
-Description,Description
+Description,Описание
 "Store View","Store View"
 Status,Status
 "Edit Brand '%1'","Edit Brand '%1'"
 "New Brand","New Brand"
 "General Information","General Information"
 ID,ID
-Name,Name
+Name,Име
 SKU,SKU
 Visibility,Visibility
 Websites,Websites
 Position,Position
-"Related Products","Related Products"
+"Related Products","Свързани продукти"
 Image,Image
 Order,Order
 Edit,Edit
@@ -32,7 +32,7 @@ Excel,Excel
 "Change status","Change status"
 "%1 > %2 :","%1 > %2 :"
 "System > Stores > Configuration > Magiccart > Shop Brand","System > Stores > Configuration > Magiccart > Shop Brand"
-Home,Home
+Home,Начало
 "Go to Home Page","Go to Home Page"
 "Delete successfully !","Delete successfully !"
 "This Brand no longer exists.","This Brand no longer exists."
@@ -70,17 +70,17 @@ Disabled,Disabled
 "5 row(s) /slider","5 row(s) /slider"
 True,True
 False,False
-No,No
-Yes,Yes
-"Search brand","Search brand"
-"Search a brand","Search a brand"
-Search,Search
-"We can't find brands matching the selection","We can't find brands matching the selection"
+No,Не
+Yes,Да
+"Search brand","Търсене на марка"
+"Search a brand","Търсене на марка"
+Search,Търсене
+"We can't find brands matching the selection","Няма открити марки"
 0-9,0-9
 "View all","View all"
-All,All
-"We can't find products matching the selection.","We can't find products matching the selection."
-"Add to Cart","Add to Cart"
+All,Всички
+"We can't find products matching the selection.","Няма открити марки."
+"Add to Cart","В кошницата"
 "In stock","In stock"
 "Out of stock","Out of stock"
 "Add to Wish List","Add to Wish List"
@@ -154,4 +154,4 @@ Padding,Padding
 Template,Template
 Default,Default
 "Shop Brand Widget","Shop Brand Widget"
-Brands,Brands
+Brands,Марки

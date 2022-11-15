@@ -1,7 +1,6 @@
 {
   "name": "magiccart/shopbrand",
   "description": "Shop Brand magento 2.",
-  "version": "999.0.0",
   "require": {
     "magiccart/community" : ">=1.0",
     "magiccart/magicproduct" : ">=1.0"

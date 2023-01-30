@@ -6,11 +6,11 @@
     <body>
         <attribute name="class" value="page-products"/>
         <referenceContainer name="sidebar.main">
-            <block class="Magiccart\Shopbrand\Block\Sidebar" 
-                name="brand_sidebar" as="brandSidebar" 
+            <block class="Magiccart\Shopbrand\Block\Sidebar"
+                name="brand_sidebar" as="brandSidebar"
                 template="Magiccart_Shopbrand::sidebar.phtml"
                 ifconfig="shopbrand/brand_page_settings/sidebar_shopbybrand"
-                before="-" 
+                before="-"
             />
         </referenceContainer>
         <referenceContainer name="content">

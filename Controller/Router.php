@@ -50,7 +50,6 @@ class Router implements \Magento\Framework\App\RouterInterface
             $model = $this->_brand->create();
             $model->load($url_key, 'urlkey');
 
-
             if (!empty($model->load($url_key, 'urlkey'))) {
                 $id = $model->load($url_key, 'urlkey')->getData('shopbrand_id');
                 $request->setModuleName('shopbrand')
@@ -60,8 +59,6 @@ class Router implements \Magento\Framework\App\RouterInterface
                         ->setPathInfo('/shopbrand/brand/view');
                 return $this->actionFactory->create('Magento\Framework\App\Action\Forward');
             }
-        } else {
-            return;
         }
     }
 }

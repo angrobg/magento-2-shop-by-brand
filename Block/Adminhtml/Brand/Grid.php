@@ -1,8 +1,8 @@
 <?php
 /**
- * Magiccart 
- * @category    Magiccart 
- * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
+ * Magiccart
+ * @category    Magiccart
+ * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/)
  * @license     http://www.magiccart.net/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2016-01-05 10:40:51
@@ -27,18 +27,19 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     /**
      * construct.
      *
-     * @param \Magento\Backend\Block\Template\Context                         $context
-     * @param \Magento\Backend\Helper\Data                                    $backendHelper
+     * @param \Magento\Backend\Block\Template\Context $context
+     * @param \Magento\Backend\Helper\Data $backendHelper
      * @param \Magiccart\Shopbrand\Model\ResourceModel\Shopbrand\CollectionFactory $shopbrandCollectionFactory
-     * @param array                                                           $data
+     * @param array $data
      */
     public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Backend\Helper\Data $backendHelper,
+        \Magento\Backend\Block\Template\Context                              $context,
+        \Magento\Backend\Helper\Data                                         $backendHelper,
         \Magiccart\Shopbrand\Model\ResourceModel\Shopbrand\CollectionFactory $shopbrandCollectionFactory,
-    
-        array $data = []
-    ) {
+
+        array                                                                $data = []
+    )
+    {
         $this->_shopbrandCollectionFactory = $shopbrandCollectionFactory;
 
         parent::__construct($context, $backendHelper, $data);
@@ -58,7 +59,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
     {
         $store = $this->getRequest()->getParam('store');
         $collection = $this->_shopbrandCollectionFactory->create();
-        if($store) $collection->addFieldToFilter('stores',array( array('finset' => 0), array('finset' => $store)));
+        if ($store) $collection->addFieldToFilter('stores', [['finset' => 0], ['finset' => $store]]);
         $this->setCollection($collection);
 
         return parent::_prepareCollection();
@@ -149,6 +150,17 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
             ]
         );
 
+        // NIMA CHANGES
+        $this->addColumn(
+            'visible_on_home_page',
+            [
+                'header' => __('Visible on Home Page'),
+                'index' => 'visible_on_home_page',
+                'type' => 'options',
+                'options' => Status::getAvailableStatusesYesNo(),
+            ]
+        );
+
         $this->addColumn(
             'edit',
             [
@@ -232,7 +244,7 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
 
     /**
      * get row url
-     * @param  object $row
+     * @param object $row
      * @return string
      */
     public function getRowUrl($row)

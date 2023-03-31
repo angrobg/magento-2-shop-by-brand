@@ -1,8 +1,8 @@
 <?php
 /**
- * Magiccart 
- * @category    Magiccart 
- * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
+ * Magiccart
+ * @category    Magiccart
+ * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/)
  * @license     http://www.magiccart.net/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2016-01-11 23:15:05
@@ -27,6 +27,19 @@ class Status
         return [
             self::STATUS_ENABLED => __('Enabled')
             , self::STATUS_DISABLED => __('Disabled'),
+        ];
+    }
+
+    /**
+     * get available statuses.
+     *
+     * @return []
+     */
+    public static function getAvailableStatusesYesNo()
+    {
+        return [
+            self::STATUS_ENABLED => __('Yes')
+            , self::STATUS_DISABLED => __('No'),
         ];
     }
 

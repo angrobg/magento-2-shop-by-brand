@@ -1,8 +1,8 @@
 <?php
 /**
- * Magiccart 
- * @category    Magiccart 
- * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
+ * Magiccart
+ * @category    Magiccart
+ * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/)
  * @license     http://www.magiccart.net/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2016-01-05 10:40:51
@@ -22,7 +22,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
 
     /**
      * @var \Magento\Catalog\Model\Category\Attribute\Source\Page
-     */    
+     */
     protected $_brand;
 
     /**
@@ -155,7 +155,7 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'required' => true,
             ]
         );
-        
+
         $fieldset->addField('description', 'editor', [
             'name'   => 'description',
             'label'  => __('Description'),
@@ -198,6 +198,15 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic implements \Magent
                 'title' => __('Status'),
                 'name' => 'status',
                 'options' => Status::getAvailableStatuses(),
+            ]
+        );
+
+        $fieldset->addField('visible_on_home_page', 'select',
+            [
+                'label' => __('Visible on Home Page'),
+                'title' => __('Visible on Home Page'),
+                'name' => 'visible_on_home_page',
+                'options' => Status::getAvailableStatusesYesNo(),
             ]
         );
 

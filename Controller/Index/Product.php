@@ -21,22 +21,22 @@ class Product extends \Magiccart\Shopbrand\Controller\Index
      */
     public function execute()
     {
-    	if ($this->getRequest()->isAjax()) {
-	        $this->_view->loadLayout();
-	        // $this->_view->renderLayout();
-	        $info = $this->getRequest()->getParam('info');
-	        $type = $this->getRequest()->getParam('type');
-	        $tmp = $info['timer'] ? 'product/gridtimer.phtml':'product/grid.phtml';
-	        $products = $this->_view->getLayout()->createBlock('Magiccart\Shopbrand\Block\Product\GridProduct')
-					            ->setCfg($info)
-					           	->setActivated($type)
-					           	->setTemplate($tmp)
-					           	->toHtml();
-	        $this->getResponse()->setBody( $products );
-	    }else {
-	        $resultRedirect = $this->_resultPageFactory->create(ResultFactory::TYPE_REDIRECT);
-	        $resultRedirect->setUrl($this->_redirect->getRefererUrl());
-	        return $resultRedirect;
-	    }
+        if ($this->getRequest()->isAjax()) {
+            $this->_view->loadLayout();
+            // $this->_view->renderLayout();
+            $info = $this->getRequest()->getParam('info');
+            $type = $this->getRequest()->getParam('type');
+            $tmp = $info['timer'] ? 'product/gridtimer.phtml' : 'product/grid.phtml';
+            $products = $this->_view->getLayout()->createBlock('Magiccart\Shopbrand\Block\Product\GridProduct')
+                ->setCfg($info)
+                ->setActivated($type)
+                ->setTemplate($tmp)
+                ->toHtml();
+            $this->getResponse()->setBody($products);
+        } else {
+            $resultRedirect = $this->_resultPageFactory->create(ResultFactory::TYPE_REDIRECT);
+            $resultRedirect->setUrl($this->_redirect->getRefererUrl());
+            return $resultRedirect;
+        }
     }
 }

@@ -77,11 +77,16 @@ $_aloHelper = $this->helper('Magiccart\Shopbrand\Helper\Alothemes');
                                                             <input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
                                                             <input type="hidden" name="<?php /* @escapeNotVerified */ echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php /* @escapeNotVerified */ echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
                                                             <?php echo $block->getBlockHtml('formkey')?>
+
+                                                            <?php if ($_product->getLimitedOffer()): ?>
+                                                                <?= $this->getLayout()->createBlock('Nimasystems\Angro\Block\Product\LimitedOffer\Action')->setSource('brand_product_list')->setProduct($_product)->toHtml() ?>
+                                                            <?php else: ?>
                                                             <button type="submit"
                                                                     title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"
                                                                     class="action tocart primary button btn-cart pull-left-none">
                                                                 <span><i class="pe-7s-cart icons"></i><span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span></span>
                                                             </button>
+                                                            <?php endif; ?>
                                                         </form>
                                                     <?php else: ?>
                                                         <?php if ($_product->getIsSalable()): ?>

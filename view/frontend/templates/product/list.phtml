@@ -113,7 +113,11 @@ $_helper = $this->helper(Magento\Catalog\Helper\Output::class);
                                         <?= $block->getBlockHtml('formkey') ?>
 
                                         <?php if ($_product->getLimitedOffer()): ?>
-                                            <?= $this->getLayout()->createBlock('Nimasystems\Angro\Block\Product\LimitedOffer\Action')->setSource('brand_product_list')->setProduct($_product)->toHtml() ?>
+                                            <?= $this->getLayout()->createBlock('Nimasystems\Angro\Block\Product\LimitedOffer\Action')
+                                                ->setSource('brand_product_list')
+                                                ->setProduct($_product)
+                                                ->setIsProductListing(true)
+                                                ->toHtml() ?>
                                         <?php else: ?>
                                         <button type="submit"
                                             title="<?= $block->escapeHtmlAttr(__('Add to Cart')) ?>"

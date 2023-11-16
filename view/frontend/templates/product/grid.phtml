@@ -85,11 +85,16 @@ $_aloHelper = $this->helper('Magiccart\Shopbrand\Helper\Alothemes');
                                                                     ->setIsProductListing(true)
                                                                     ->toHtml() ?>
                                                             <?php else: ?>
-                                                            <button type="submit"
-                                                                    title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"
-                                                                    class="action tocart primary button btn-cart pull-left-none">
-                                                                <span><i class="pe-7s-cart icons"></i><span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span></span>
-                                                            </button>
+                                                                <?= $this->getLayout()->createBlock('Nimasystems\Angro\Block\Product\LimitedOffer\Action')
+                                                                    ->setSource('brand_product_list')
+                                                                    ->setProduct($_product)
+                                                                    ->setIsProductListing(true)
+                                                                    ->toHtml() ?>
+                                                                <button type="submit"
+                                                                        title="<?php echo $block->escapeHtml(__('Add to Cart')); ?>"
+                                                                        class="action tocart primary button btn-cart pull-left-none">
+                                                                    <span><i class="pe-7s-cart icons"></i><span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span></span>
+                                                                </button>
                                                             <?php endif; ?>
                                                         </form>
                                                     <?php else: ?>

@@ -119,11 +119,16 @@ $_helper = $this->helper(Magento\Catalog\Helper\Output::class);
                                                 ->setIsProductListing(true)
                                                 ->toHtml() ?>
                                         <?php else: ?>
-                                        <button type="submit"
-                                            title="<?= $block->escapeHtmlAttr(__('Add to Cart')) ?>"
-                                            class="action tocart primary">
-                                            <span><?= $block->escapeHtml(__('Add to Cart')) ?></span>
-                                        </button>
+                                            <?= $this->getLayout()->createBlock('Nimasystems\Angro\Block\Product\LimitedOffer\Action')
+                                                ->setSource('brand_product_list')
+                                                ->setProduct($_product)
+                                                ->setIsProductListing(true)
+                                                ->toHtml() ?>
+                                            <button type="submit"
+                                                title="<?= $block->escapeHtmlAttr(__('Add to Cart')) ?>"
+                                                class="action tocart primary">
+                                                <span><?= $block->escapeHtml(__('Add to Cart')) ?></span>
+                                            </button>
                                         <?php endif; ?>
                                 </form>
                                 <?php else :?>

@@ -1,8 +1,8 @@
 <?php
 /**
- * Magiccart 
- * @category    Magiccart 
- * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/) 
+ * Magiccart
+ * @category    Magiccart
+ * @copyright   Copyright (c) 2014 Magiccart (http://www.magiccart.net/)
  * @license     http://www.magiccart.net/license-agreement.html
  * @Author: DOng NGuyen<nguyen@dvn.com>
  * @@Create Date: 2016-01-05 10:40:51
@@ -63,7 +63,7 @@ class Brand extends \Magento\Framework\View\Element\Template
         parent::__construct($context, $data);
     }
 
-    public function getAdminUrl($adminPath, $routeParams=[], $storeCode = 'default' ) 
+    public function getAdminUrl($adminPath, $routeParams=[], $storeCode = 'default' )
     {
         $routeParams[] = [ '_nosid' => true, '_query' => ['___store' => $storeCode]];
         return $this->backendUrl->getUrl($adminPath, $routeParams);
@@ -98,7 +98,7 @@ class Brand extends \Magento\Framework\View\Element\Template
             ];
         }
 
-        return $quickedit;      
+        return $quickedit;
     }
 
     public function getBrandCollection()
@@ -114,7 +114,7 @@ class Brand extends \Magento\Framework\View\Element\Template
     }
 
     public function getImage($brand)
-    {       
+    {
         $resizedURL = $this->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . $brand->getImage();
         return $resizedURL;
     }
@@ -131,11 +131,11 @@ class Brand extends \Magento\Framework\View\Element\Template
     }
 
     public function getFrontendCfg()
-    { 
+    {
         if($this->getSlide()) return $this->getSlideOptions();
 
         $this->addData(array('responsive' =>json_encode($this->getGridOptions())));
-        
+
         return array('padding', 'responsive');
 
     }

@@ -121,10 +121,10 @@ class ListBrand extends Brand implements \Magento\Framework\DataObject\IdentityI
 
     /**
      * @return number
-     */    
+     */
     public function getProductCount(\Magiccart\Shopbrand\Model\Shopbrand $brand)
     {
         $collection = $brand->getProductCollection();
-        return $collection->count();
+        return $collection->getSize();
     }
 }

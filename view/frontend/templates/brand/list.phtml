@@ -2,7 +2,7 @@
 /**
  *
  * @var $block \Magiccart\Shopbrand\Block\ListBrand
- * 
+ *
  */
 ?>
 <?php
@@ -11,6 +11,7 @@ $helper = $this->_helper;
 $productCount = $helper->getConfigModule('list_page_settings/show_product_count');
 $brands = $block->getBrands();
 $keyword = $this->getRequest()->getParam('keyword');
+
 ?>
 <?php echo $block->getChildHtml('brand_filter_by_character'); ?>
 <div class="shop-by-brand <?php /* @escapeNotVerified */ echo $selector ?>" >
@@ -39,7 +40,7 @@ $keyword = $this->getRequest()->getParam('keyword');
         <div class="brand-list grid-slider"
             <?php foreach ($this->getFrontendCfg() as $opt) :?>
                 data-<?php /* @escapeNotVerified */ echo $opt ?>='<?php /* @escapeNotVerified */ echo $this->getData($opt) ?>'
-            <?php endforeach;?>  
+            <?php endforeach;?>
         >
         <?php foreach ($brands as $brand) : ?>
             <?php $href = $helper->getLinkBrand($brand); ?>
@@ -59,7 +60,7 @@ $keyword = $this->getRequest()->getParam('keyword');
                 </div>
             </div>
         <?php endforeach; ?>
-        </div> 
+        </div>
     </div>
 </div>
 <script type="text/javascript">

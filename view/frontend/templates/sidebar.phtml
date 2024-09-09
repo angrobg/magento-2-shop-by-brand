@@ -1,17 +1,17 @@
-<?php 
+<?php
 $brands = $this->getBrands();
 $filterBrand = $this->getFilterBrand();
 $helper = $this->_helper;
 $keyword = $this->getRequest()->getParam('keyword');
 ?>
-<div class="block filter brand-search-sidebar" id="layerednav-filter-block-brand" data-mage-init='{"collapsible":{"openedState": "active", "collapsible": true, "active": false, "collateral": { "openedState": "filter-active", "element": "body" } }}'> 
+<div class="block filter brand-search-sidebar" id="layerednav-filter-block-brand" data-mage-init='{"collapsible":{"openedState": "active", "collapsible": true, "active": false, "collateral": { "openedState": "filter-active", "element": "body" } }}'>
     <div class="block-title filter-title">
-        <strong data-role="title" role="tab" aria-selected="true" aria-expanded="true" tabindex="0"><?= $block->escapeHtml(__('Shop By Brand')) ?></strong> 
-    </div> 
-    <div class="block-content filter-content sidebar-shop sidebar-left"> 
-    <strong role="heading" aria-level="2" class="block-subtitle filter-subtitle"><?= $block->escapeHtml(__('Shop Brand Options')) ?></strong> 
-        <div class="filter-options widget widget-filter" id="narrow-by-list-brand" data-role="content" data-mage-init='{"accordion":{"openedState": "active", "active": false, "collapsible": true, "multipleCollapsible": true}}'> 
-            <div data-role="collapsible" class="filter-options-item"> 
+        <strong data-role="title" role="tab" aria-selected="true" aria-expanded="true" tabindex="0"><?= $block->escapeHtml(__('Shop By Brand')) ?></strong>
+    </div>
+    <div class="block-content filter-content sidebar-shop sidebar-left">
+    <strong role="heading" aria-level="2" class="block-subtitle filter-subtitle"><?= $block->escapeHtml(__('Shop Brand Options')) ?></strong>
+        <div class="filter-options widget widget-filter" id="narrow-by-list-brand" data-role="content" data-mage-init='{"accordion":{"openedState": "active", "active": false, "collapsible": true, "multipleCollapsible": true}}'>
+            <div data-role="collapsible" class="filter-options-item">
                 <div data-role="title" class="filter-options-title"><?= $block->escapeHtml(__('Search brand')) ?></div>
                 <div data-role="content" class="filter-options-content">
                     <div class="block block-search">

@@ -122,7 +122,7 @@ class Brand extends \Magento\Framework\View\Element\Template
     public function getResponsiveBreakpoints()
     {
         return Responsive::getBreakpoints();
-        return array(1921=>'visible', 1920=>'desktop', 1200=>'laptop', 992=>'notebook', 768=>'tablet', 640=>'landscape', 480=>'portrait', 361=>'mobile', 1=>'mobile');
+//        return array(1921=>'visible', 1920=>'desktop', 1200=>'laptop', 992=>'notebook', 768=>'tablet', 640=>'landscape', 480=>'portrait', 361=>'mobile', 1=>'mobile');
     }
 
     public function getSlideOptions()

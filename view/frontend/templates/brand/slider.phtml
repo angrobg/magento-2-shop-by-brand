@@ -17,12 +17,12 @@ $brands = $block->getBrands();
     <div class="block brand-slider brand-slider-angro" style="margin-bottom: 30px;">
 
         <div class="block-content">
-            <div data-owl="owl-slider" data-autoplay="false" data-nav="true" data-dots="false" data-screen0="3"
+            <div data-owl="owl-slider" data-autoplay="true" data-autoplay-timeout="5000" data-nav="true" data-dots="false" data-screen0="3"
                  data-screen481="4" data-screen768="6" data-screen992="8" data-screen1200="10"
                  data-screen1441="12"
                  data-screen1681="12" data-screen1920="12" data-margin="20" data-autoplayhoverpause="true"
-                 data-loop="true" data-center="false" data-stagepadding="0" data-mousedrag="true"
-                 data-touchdrag="true">
+                 data-loop="false" data-center="false" data-stagepadding="0" data-mousedrag="true"
+                 data-touchdrag="true" data-slideby="page">
                 <div class="owl-carousel owl-theme">
                     <?php foreach ($brands as $brand) : ?>
                         <?php $href = $helper->getLinkBrand($brand); ?>

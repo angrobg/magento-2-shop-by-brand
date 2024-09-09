@@ -9,7 +9,7 @@ if(!count($brands)) return;
     <div class="shopbrand grid-slider"
     <?php foreach ($this->getFrontendCfg() as $opt) :?>
         data-<?php /* @escapeNotVerified */ echo $opt ?>='<?php /* @escapeNotVerified */ echo $this->getData($opt) ?>'
-    <?php endforeach;?>  
+    <?php endforeach;?>
     >
         <?php $i=0; foreach ($brands as $brand) :?>
 			<div class="item">

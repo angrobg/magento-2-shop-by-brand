@@ -18,9 +18,6 @@ $keyword = $this->getRequest()->getParam('keyword');
     <div class="block block-search brand-search">
         <form class="form minisearch form-search brand-form-search" id="shopbrand_search_mini_form" action="<?php echo $helper->getUrlRouter() ?>" method="get">
             <div class="field search">
-                <label class="label brand-label" for="brand-search">
-                    <span><?php echo __('Search brand') ?></span>
-                </label>
                 <div class="control-search">
                     <input class ="keyword" type="text" name="keyword" placeholder="<?php echo __('Search a brand') ?>" value="<?php echo $block->escapeHtml($keyword) ?>"/>
                 </div>

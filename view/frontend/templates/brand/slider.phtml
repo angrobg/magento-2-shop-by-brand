@@ -21,7 +21,7 @@ $brands = $block->getBrands();
                  data-screen481="4" data-screen768="6" data-screen992="8" data-screen1200="10"
                  data-screen1441="12"
                  data-screen1681="12" data-screen1920="12" data-margin="20" data-autoplayhoverpause="true"
-                 data-loop="true" data-center="true" data-stagepadding="0" data-mousedrag="true"
+                 data-loop="true" data-stagepadding="0" data-mousedrag="true"
                  data-touchdrag="true" data-slideby="10">
                 <div class="owl-carousel owl-theme">
                     <?php foreach ($brands as $brand) : ?>
@@ -30,6 +30,8 @@ $brands = $block->getBrands();
                             <a title="<?= $block->escapeHtml($brand->getTitle()); ?>" href="<?= /* @escapeNotVerified */
                             $href ?>">
                                 <img class="mark-lazy"
+                                     width="100"
+                                     height="100"
                                      src="<?= /* @escapeNotVerified */
                                      $helper->getMediaUrl($brand->getImage()) ?>"
                                      alt="<?= $block->escapeHtml($brand->getTitle()); ?>"

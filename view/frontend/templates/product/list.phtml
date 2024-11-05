@@ -20,6 +20,10 @@ $title = $this->getType()->getData('title');
 $description = $this->getType()->getData('description');
 $_productCollection = $block->getLoadedProductCollection();
 $_helper = $this->helper(Magento\Catalog\Helper\Output::class);
+
+// @codingStandardsIgnoreFile
+$_config = $this->helper('Sm\Themecore\Helper\Data');
+
 ?>
 <div class="block-title-list-product">
     <strong id="block-compare-heading" role="heading" aria-level="2"><?php echo __('Brand');?>:</strong>
@@ -70,11 +74,15 @@ $_helper = $this->helper(Magento\Catalog\Helper\Output::class);
                             }
                             ?>
                             <?php // Product Image ?>
-                            <a href="<?= $block->escapeUrl($_product->getProductUrl()) ?>"
-                             class="product photo product-item-photo"
-                             tabindex="-1">
-                             <?= $productImage->toHtml() ?>
-                         </a>
+                            <div class="image-product">
+                                <?php // Product Image ?>
+                                <a href="<?= $block->escapeUrl($_product->getProductUrl()) ?>"
+                                 class="product photo product-item-photo"
+                                 tabindex="-1">
+                                 <?= $productImage->toHtml() ?>
+                             </a>
+                                <?= $_config->getLabelProduct($_product); ?>
+                            </div>
                          <div class="product details product-item-details">
                             <?php
                             $_productNameStripped = $block->stripTags($_product->getName(), null, true);

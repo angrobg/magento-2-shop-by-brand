@@ -1,7 +1,10 @@
 <?php
+
 namespace Magiccart\Shopbrand\Controller\Brand;
 
-class View extends \Magento\Framework\App\Action\Action
+use Magento\Framework\App\Action\Action;
+
+class View extends Action
 {
     public function execute()
     {

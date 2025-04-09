@@ -9,38 +9,22 @@
 ?>
 <?php
 
-$helper = $this->getHelper();
-$brands = $block->getBrands();
+/** @var \Magiccart\Shopbrand\Block\Brand\Slider $block */
 
-?>
-<?php if ($brands->count()) : ?>
-    <div class="block brand-slider brand-slider-angro" style="margin-bottom: 30px;">
+$loadedOnVisible = true; //$block->isLoadedOnVisible();
+$ajaxLoadUrl = $block->getBrandItemsUrl();
 
-        <div class="block-content">
-            <div data-owl="owl-slider" data-autoplay="true" data-autoplay-timeout="5000" data-nav="false" data-dots="false" data-screen0="3"
-                 data-screen481="4" data-screen768="6" data-screen992="8" data-screen1200="10"
-                 data-screen1441="12"
-                 data-screen1681="12" data-screen1920="12" data-margin="20" data-autoplayhoverpause="true"
-                 data-loop="true" data-stagepadding="0" data-mousedrag="true"
-                 data-touchdrag="true" data-slideby="10">
-                <div class="owl-carousel owl-theme">
-                    <?php foreach ($brands as $brand) : ?>
-                        <?php $href = $helper->getLinkBrand($brand); ?>
-                        <div class="item">
-                            <a title="<?= $block->escapeHtml($brand->getTitle()); ?>" href="<?= /* @escapeNotVerified */
-                            $href ?>">
-                                <img class="mark-lazy"
-                                     width="100"
-                                     height="100"
-                                     src="<?= /* @escapeNotVerified */
-                                     $helper->getMediaUrl($brand->getImage()) ?>"
-                                     alt="<?= $block->escapeHtml($brand->getTitle()); ?>"
-                                />
-                            </a>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php endif; ?>
+if ($loadedOnVisible) {
+    ?>
+    <?php $containerId = 'brand-slider-container-' . uniqid(); ?>
+    <div class="block brand-slider-container" id="<?= $containerId ?>" data-ajax-url="<?= $ajaxLoadUrl ?>"></div>
+    <script type="text/javascript">
+        require(['jquery', 'brandsSlider'], function ($) {
+            const container = document.getElementById('<?= $containerId ?>');
+            $(container).brandsSlider();
+        });
+    </script>
+    <?php
+} else {
+    ?>
+<?php } ?>

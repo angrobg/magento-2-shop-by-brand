@@ -3,14 +3,23 @@
 namespace Magiccart\Shopbrand\Controller\Brand;
 
 use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\Context;
+use Magento\Framework\View\Result\PageFactory;
 
 class ListBrand extends Action
 {
-    protected $_pageFactory;
+    /**
+     * @var PageFactory
+     */
+    protected PageFactory $_pageFactory;
 
+    /**
+     * @param Context $context
+     * @param PageFactory $pageFactory
+     */
     public function __construct(
-        \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $pageFactory
+        Context     $context,
+        PageFactory $pageFactory
     )
     {
         $this->_pageFactory = $pageFactory;
@@ -19,7 +28,6 @@ class ListBrand extends Action
 
     public function execute()
     {
-        $result = $this->_pageFactory->create();
-        return $result;
+        return $this->_pageFactory->create();
     }
 }

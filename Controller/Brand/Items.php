@@ -42,7 +42,12 @@ class Items extends Action
 
         // Create layout and get the block
         $layout = $this->layoutFactory->create();
-        $block = $layout->createBlock(\Magiccart\Shopbrand\Block\Brand\Slider\Items::class)
+        // do not cache - items are randomized
+        $block = $layout->createBlock(\Magiccart\Shopbrand\Block\Brand\Slider\Items::class, 'brand_items', [
+            'data' => [
+                'random_items' => true,
+            ],
+        ])
             ->setTemplate('Magiccart_Shopbrand::brand/slider/items.phtml');
 
         $html = $block->toHtml();

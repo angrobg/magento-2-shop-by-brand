@@ -19,11 +19,14 @@ use Magento\Review\Model\Review;
 use Magento\Store\Model\StoreManagerInterface;
 use Magiccart\Shopbrand\Helper\Data;
 use Magiccart\Shopbrand\Model\ResourceModel\Shopbrand\Collection;
+use Magiccart\Shopbrand\Model\Shopbrand;
 use Magiccart\Shopbrand\Model\ShopbrandFactory;
 
 class Items extends Template
 {
     const CACHE_TAGS = 'MAGICCART_SHOPBYBRAND_BRAND_SLIDER';
+    const CACHE_TAGS_RANDOM = 'MAGICCART_SHOPBYBRAND_BRAND_SLIDER_RANDOM';
+    const MAX_RANDOM_ITEMS = 20;
 
     /**
      * @var ResourceConnection
@@ -135,6 +138,11 @@ class Items extends Template
         return $this->_helper;
     }
 
+    protected function getIsRandomItems(): bool
+    {
+        return (bool)$this->getData('random_items');
+    }
+
     /**
      * Resource initialization
      */
@@ -143,10 +151,12 @@ class Items extends Template
         parent::_construct();
 
         if ($this->useCache) {
+            $randomItems = $this->getIsRandomItems();
+
             $this->addData(
                 [
-                    'cache_lifetime' => 86400,
-                    'cache_tags' => [self::CACHE_TAGS,],
+                    'cache_lifetime' => $randomItems ? 900 : 86400, /* change every 15 mins */
+                    'cache_tags' => [$randomItems ? self::CACHE_TAGS_RANDOM : self::CACHE_TAGS,],
                 ]
             );
         }
@@ -194,8 +204,21 @@ class Items extends Template
     {
         $collection = $this->getBrandCollection();
         $collection->addFieldToFilter('visible_on_home_page', ['eq' => '1']);
+
+        if ($this->getIsRandomItems()) {
+            $collection->getSelect()->order('RAND()')->limit(self::MAX_RANDOM_ITEMS);
+        } else {
+            $collection->setOrder('title', 'ASC');
+        }
+
         $collection->setOrder('title', 'ASC');
         return $collection;
+    }
+
+    public function getBrandImageUrl(Shopbrand $brand): string
+    {
+        /** @noinspection PhpUndefinedMethodInspection */
+        return $this->_helper->getMediaUrl($brand->getImage());
     }
 
     protected function _toHtml(): string

@@ -1,12 +1,36 @@
 define([
     'jquery',
     'jquery-ui-modules/widget',
-    'owlCarousel'
+    'owlCarousel',
+    'domReady!',
 ], function ($) {
 
     $.widget('mage.brandsSlider', {
         options: {
             delayTimeout: 1000,
+            carouselOptions: {
+                autoplay: true,
+                autoplayTimeout: 5000,
+                nav: false,
+                dots: false,
+                responsive: {
+                    0: {items: 3},
+                    481: {items: 4},
+                    768: {items: 6},
+                    992: {items: 8},
+                    1200: {items: 10},
+                    1441: {items: 12},
+                    1681: {items: 12},
+                    1920: {items: 12},
+                },
+                margin: 20,
+                autoplayHoverPause: true,
+                loop: true,
+                stagePadding: 0,
+                mouseDrag: true,
+                touchDrag: true,
+                slideBy: 10
+            },
         },
 
         _create: function () {
@@ -27,7 +51,7 @@ define([
                 // Fallback: immediately load if IntersectionObserver is not supported
                 this.loadSlider(container);
             } else {
-                let me = this;
+                const me = this;
 
                 const observer = new IntersectionObserver((entries, observer) => {
                     entries.forEach(entry => {
@@ -44,7 +68,7 @@ define([
 
         loadSlider: function (container) {
             if (this.options.delayTimeout > 0) {
-                let me = this;
+                const me = this;
                 setTimeout(function () {
                     me.loadSliderAfterDelay(container);
                 }, this.options.delayTimeout);
@@ -53,44 +77,23 @@ define([
             }
         },
 
+        initCarousel: function (container, data) {
+            container.innerHTML = data;
+            const options = this.options.carouselOptions;
+            $(container).find('.owl-carousel').owlCarousel(options);
+        },
+
         loadSliderAfterDelay: function (container) {
             const url = container.dataset.ajaxUrl;
             if (!url) return;
+
+            const me = this;
 
             $.ajax({
                 url: url,
                 type: 'GET',
                 success: function (response) {
-                    container.innerHTML = response;
-                    let options = {
-                        autoplay: true,
-                        autoplayTimeout: 5000,
-                        nav: false,
-                        dots: false,
-                        responsive: {
-                            0: {items: 3},
-                            481: {items: 4},
-                            768: {items: 6},
-                            992: {items: 8},
-                            1200: {items: 10},
-                            1441: {items: 12},
-                            1681: {items: 12},
-                            1920: {items: 12},
-                        },
-                        margin: 20,
-                        autoplayHoverPause: true,
-                        loop: true,
-                        stagePadding: 0,
-                        mouseDrag: true,
-                        touchDrag: true,
-                        slideBy: 10
-                    };
-
-                    try {
-                        $(container).find('.owl-carousel').owlCarousel(options);
-                    } catch (error) {
-                        console.error('Failed to initialize Owl Carousel:', error);
-                    }
+                    me.initCarousel(container, response);
                 },
                 error: function () {
                     console.error('Failed to load brand slider via AJAX.');

@@ -43,8 +43,8 @@ $keyword = $this->getRequest()->getParam('keyword');
             <?php $href = $helper->getLinkBrand($brand); ?>
             <div class="item">
                 <div class="image">
-                    <a href="<?= /* @escapeNotVerified */ $href ?>">
-                        <img class="img-responsive" src="<?= /* @escapeNotVerified */ $helper->getMediaUrl($brand->getImage()) ?>" alt="<?= /* @escapeNotVerified */ $brand->getName(); ?>"/>
+                    <a href="<?= /* @escapeNotVerified */ $href ?>" title="<?= $block->escapeHtml($brand->getTitle()); ?>">
+                        <img class="img-responsive" src="<?= /* @escapeNotVerified */ $helper->getMediaUrl($brand->getImage()) ?>" alt="<?= $block->escapeHtml($brand->getTitle()); ?>"/>
                     </a>
                 </div>
                 <div class="name">

@@ -1,7 +1,6 @@
 define([
     'jquery',
     'jquery-ui-modules/widget',
-    'owlCarousel',
     'domReady!',
 ], function ($) {
 
@@ -80,7 +79,10 @@ define([
         initCarousel: function (container, data) {
             container.innerHTML = data;
             const options = this.options.carouselOptions;
-            $(container).find('.owl-carousel').owlCarousel(options);
+
+            require(['owlCarousel'], function () {
+                $(container).find('.owl-carousel').owlCarousel(options);
+            });
         },
 
         loadSliderAfterDelay: function (container) {

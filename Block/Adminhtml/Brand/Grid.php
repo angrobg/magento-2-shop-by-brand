@@ -150,7 +150,6 @@ class Grid extends \Magento\Backend\Block\Widget\Grid\Extended
             ]
         );
 
-        // NIMA CHANGES
         $this->addColumn(
             'visible_on_home_page',
             [

@@ -4,7 +4,6 @@
  * @Author: Martin Kovachev <miracle@nimasystems.com>
  */
 
-// NIMA CHANGES
 namespace Magiccart\Shopbrand\Setup;
 
 use Magento\Framework\Setup\ModuleContextInterface;

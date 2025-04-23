@@ -4,8 +4,6 @@
  * @Author: Martin Kovachev <miracle@nimasystems.com>
  */
 
-// NIMA CHANGES
-
 namespace Magiccart\Shopbrand\Block\Brand;
 
 use Magento\Catalog\Block\Product\Context;

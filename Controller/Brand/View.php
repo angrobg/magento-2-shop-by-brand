@@ -2,14 +2,22 @@
 
 namespace Magiccart\Shopbrand\Controller\Brand;
 
-use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Action\HttpGetActionInterface;
+use Magento\Framework\View\Result\PageFactory;
+use Magento\Framework\View\Result\Page;
 
-class View extends Action
+class View implements HttpGetActionInterface
 {
-    public function execute()
+    private PageFactory $pageFactory;
+
+    public function __construct(
+        PageFactory $pageFactory
+    ) {
+        $this->pageFactory = $pageFactory;
+    }
+
+    public function execute(): Page
     {
-        $this->_view->loadLayout();
-        $this->_view->getLayout()->initMessages();
-        $this->_view->renderLayout();
+        return $this->pageFactory->create();
     }
 }

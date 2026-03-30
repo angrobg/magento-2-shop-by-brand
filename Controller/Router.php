@@ -2,6 +2,7 @@
 
 namespace Magiccart\Shopbrand\Controller;
 
+use Magento\Framework\Url;
 
 class Router implements \Magento\Framework\App\RouterInterface
 {
@@ -54,13 +55,14 @@ class Router implements \Magento\Framework\App\RouterInterface
             $model = $this->_brand->create();
             $model->load($url_key, 'urlkey');
 
-            if (!empty($model->load($url_key, 'urlkey'))) {
-                $id = $model->load($url_key, 'urlkey')->getData('shopbrand_id');
+            if ($model->getId()) {
+                $id = (int) $model->getData('shopbrand_id');
                 $request->setModuleName('shopbrand')
                     ->setControllerName('brand')
                     ->setActionName('view')
                     ->setParam('id', $id)
-                    ->setPathInfo('/shopbrand/brand/view');
+                    ->setPathInfo('/shopbrand/brand/view/id/' . $id);
+                $request->setAlias(Url::REWRITE_REQUEST_PATH_ALIAS, $identifier . $urlSuffix);
                 return $this->actionFactory->create('Magento\Framework\App\Action\Forward');
             }
         }

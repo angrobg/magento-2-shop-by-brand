@@ -52,6 +52,7 @@
                 <speed>300</speed>
                 <autoplay_speed>3000</autoplay_speed>
                 <padding>15</padding>
+                <disable_lazyload_count>6</disable_lazyload_count>
                 <mobile>1</mobile>
                 <portrait>2</portrait>
                 <landscape>3</landscape>

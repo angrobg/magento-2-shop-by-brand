@@ -246,6 +246,11 @@
                     <comment>Padding item Brand</comment>
                     <validate>validate-zero-or-greater</validate>
                 </field>
+                <field id="disable_lazyload_count" translate="label comment" type="text" sortOrder="56" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                    <label>Disable Lazy Load for First N Images</label>
+                    <comment><![CDATA[Number of brand images (from the start) that load eagerly instead of lazy. Set 0 to lazy-load all. Useful for LCP / above-the-fold images.]]></comment>
+                    <validate>validate-zero-or-greater validate-digits</validate>
+                </field>
                 <field id="heading_responsive" translate="label comment" sortOrder="60"  showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Setting Responsive</label>
                     <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>

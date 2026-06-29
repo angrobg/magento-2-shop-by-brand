@@ -166,4 +166,9 @@ class Data extends \Magento\Framework\App\Helper\AbstractHelper
         return $this->_attribute;         
     }
 
+    public function getDisableLazyloadCount(): int
+    {
+        return (int) $this->getConfigModule('list_page_settings/disable_lazyload_count');
+    }
+
 }

@@ -11,6 +11,7 @@ $helper = $this->_helper;
 $productCount = $helper->getConfigModule('list_page_settings/show_product_count');
 $brands = $block->getBrands();
 $keyword = $this->getRequest()->getParam('keyword');
+$disableCount = $helper->getDisableLazyloadCount();
 
 ?>
 <?php echo $block->getChildHtml('brand_filter_by_character'); ?>
@@ -39,12 +40,23 @@ $keyword = $this->getRequest()->getParam('keyword');
                 data-<?php /* @escapeNotVerified */ echo $opt ?>='<?php /* @escapeNotVerified */ echo $this->getData($opt) ?>'
             <?php endforeach;?>
         >
-        <?php foreach ($brands as $brand) : ?>
+        <?php foreach ($brands as $index => $brand) : ?>
             <?php $href = $helper->getLinkBrand($brand); ?>
             <div class="item">
                 <div class="image">
                     <a href="<?= /* @escapeNotVerified */ $href ?>" title="<?= $block->escapeHtml($brand->getTitle()); ?>">
-                        <img class="img-responsive" src="<?= /* @escapeNotVerified */ $helper->getMediaUrl($brand->getImage()) ?>" alt="<?= $block->escapeHtml($brand->getTitle()); ?>"/>
+                        <img
+                            class="img-responsive"
+                            src="<?= /* @escapeNotVerified */ $helper->getMediaUrl($brand->getImage()) ?>"
+                            alt="<?= $block->escapeHtml($brand->getTitle()) ?>"
+                            <?php if ($index <= $disableCount): ?>
+                                fetchpriority="high"
+                                data-no-lazy="1"
+                            <?php endif; ?>
+                            decoding="async"
+                            width="160"
+                            height="90"
+                        />
                     </a>
                 </div>
                 <div class="name">
